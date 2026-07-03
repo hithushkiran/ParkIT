@@ -1,0 +1,25 @@
+﻿# Local development services for ColomboFlow + ParkSmart.
+# Runs one TimescaleDB/PostgreSQL database and one Redis cache.
+services:
+  database:
+    image: timescale/timescaledb-ha:pg16
+    container_name: colomboflow-database
+    environment:
+      POSTGRES_DB: colomboflow
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: colombo123
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  redis:
+    image: redis:7-alpine
+    container_name: colomboflow-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:
+

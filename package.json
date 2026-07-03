@@ -1,0 +1,9 @@
+{
+  "name": "parkit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Day 1 foundation for ColomboFlow + ParkSmart.",
+  "scripts": {
+    "build": "npm run build --prefix server && npm run build --prefix client"
+  }
+}
